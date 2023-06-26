@@ -31,7 +31,8 @@ int main(){
 		for(i = 0; i < 5000; i++);
 		pinReadCurrent = Gpio_ReadPin(GPIO_B,3);
 
-		if((pinReadCurrent == 0) &&(pinReadPrevious == pinReadCurrent)){
+		if((pinReadPrevious == pinReadCurrent)){
+			if(pinReadCurrent == 0){
 				flag = 1;
 				switch(counter){
 				case 0:
@@ -77,19 +78,15 @@ int main(){
 					 l = Gpio_WritePin(GPIO_B,7,LOW);
 					break;
 				}
-		}
-
-			else {
+			}
+		else {
 				if(flag == 1){
 					counter++;
 					flag = 0;
 				}
 			}
 		}
-
-
-
-
+	}
 
 	return 0;
 }
